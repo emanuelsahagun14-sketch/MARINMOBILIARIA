@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Propiedad — MAR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">MAR<span>.</span></a>
+    <button class="nav-toggle" aria-label="Menú">☰</button>
+    <div class="nav-links">
+      <a href="index.html">Inicio</a>
+      <a href="propiedades.html">Propiedades</a>
+      <a href="contacto.html">Contacto</a>
+      <a href="admin/login.html" class="nav-cta">Administración</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container" id="content" style="padding-top:30px;padding-bottom:70px"></div>
+
+<footer>
+  <div class="container">
+    <div>
+      <div class="logo" style="color:#fff;margin-bottom:10px">MAR<span>.</span></div>
+      <p style="color:var(--beige);opacity:.7;max-width:260px">Alquileres temporarios en Mar del Plata.</p>
+    </div>
+    <div>
+      <h4>Navegación</h4>
+      <a href="index.html">Inicio</a>
+      <a href="propiedades.html">Propiedades</a>
+      <a href="contacto.html">Contacto</a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 MAR — Mar del Plata, Argentina</div>
+</footer>
+
+<div class="modal-backdrop" id="ok-modal">
+  <div class="modal">
+    <div class="modal-head"><h3>¡Consulta enviada!</h3><button class="modal-close" id="ok-close">✕</button></div>
+    <p>Gracias por escribirnos. Recibimos tus datos y te vamos a contactar a la brevedad para coordinar tu estadía en MAR.</p>
+    <button class="btn btn-dark btn-block" id="ok-close-2">Entendido</button>
+  </div>
+</div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/store.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+  const id = qs("id");
+  const p = MAR.getProperty(id);
+  const content = document.getElementById("content");
+
+  if (!p) {
+    content.innerHTML = `<div class="empty"><div class="ico">🏝️</div><p>No encontramos esa propiedad.</p><a href="propiedades.html" class="btn btn-primary" style="margin-top:14px">Ver todas las propiedades</a></div>`;
+  } else {
+    document.getElementById("page-title").textContent = p.name + " — MAR";
+    render();
+  }
+
+  function render() {
+    content.innerHTML = `
+      <div style="font-size:.85rem;color:var(--gris);margin-bottom:16px">
+        <a href="index.html" style="color:var(--gris)">Inicio</a> /
+        <a href="propiedades.html" style="color:var(--gris)">Propiedades</a> /
+        <span style="color:var(--negro)">${p.name}</span>
+      </div>
+
+      <div class="gallery">
+        ${p.photos.slice(0, 5).map(src => `<a href="${src}" target="_blank"><img src="${src}" alt="${p.name}"></a>`).join("")}
+      </div>
+
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-top:28px;flex-wrap:wrap;gap:10px">
+        <div>
+          <div class="tag-eyebrow">${p.zone}</div>
+          <h1 style="font-size:2rem">${p.name}</h1>
+          <p style="color:var(--gris)">${p.address}</p>
+        </div>
+        <a href="#" class="btn btn-wsp" id="wsp-top">💬 WhatsApp</a>
+      </div>
+
+      <div class="prop-layout">
+        <div>
+          <p>${p.description}</p>
+
+          <div class="badge-row">
+            <span class="badge">👥 Hasta ${p.guests} huéspedes</span>
+            <span class="badge">🛏️ ${p.bedrooms} habitaciones</span>
+            <span class="badge">🛌 ${p.beds} camas</span>
+            <span class="badge">🛁 ${p.bathrooms} baños</span>
+          </div>
+
+          <h3 style="margin-top:30px">Servicios y características</h3>
+          <ul class="amenities">
+            ${p.amenities.map(a => `<li>${MAR.AMENITY_ICONS[a] || "•"} ${MAR.AMENITY_LABELS[a] || a}</li>`).join("")}
+          </ul>
+
+          <h3 style="margin-top:30px">Reglas de la casa</h3>
+          <p>${p.rules}</p>
+          <div class="field-row">
+            <div><strong>Check-in</strong><br><span style="color:var(--gris)">A partir de las ${p.checkin}</span></div>
+            <div><strong>Check-out</strong><br><span style="color:var(--gris)">Hasta las ${p.checkout}</span></div>
+          </div>
+
+          <h3 style="margin-top:34px">Disponibilidad</h3>
+          <div id="avail-controls" style="display:flex;gap:10px;align-items:center;margin-bottom:6px">
+            <button class="icon-btn" id="cal-prev">‹</button>
+            <strong id="cal-label" style="min-width:170px;text-align:center;display:inline-block"></strong>
+            <button class="icon-btn" id="cal-next">›</button>
+          </div>
+          <div class="avail-cal" id="avail-cal"></div>
+          <div class="cal-legend">
+            <span><span class="dot" style="background:#E4F6EC"></span>Disponible</span>
+            <span><span class="dot" style="background:#FDE7DC"></span>Reservado</span>
+            <span><span class="dot" style="background:#FBE0E8"></span>Ocupado</span>
+          </div>
+        </div>
+
+        <div class="booking-card">
+          <div class="price-lg">USD ${p.price} <small>/ noche</small></div>
+          <form id="booking-form">
+            <div class="row2">
+              <div><label>Ingreso</label><input type="date" id="b-checkin" required></div>
+              <div><label>Salida</label><input type="date" id="b-checkout" required></div>
+            </div>
+            <div style="margin:14px 0"><label>Huéspedes</label><input type="number" id="b-guests" min="1" max="${p.guests}" value="2"></div>
+            <div id="avail-msg" style="font-size:.85rem;margin-bottom:12px"></div>
+            <button type="button" class="btn btn-outline btn-block" id="btn-consultar" style="margin-bottom:10px">Consultar</button>
+            <button type="button" class="btn btn-primary btn-block" id="btn-reservar">Reservar</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="form-card" id="inquiry-section" style="max-width:640px;margin-top:50px">
+        <h3>Formulario de consulta</h3>
+        <p style="margin-bottom:18px">Completá tus datos y te contactamos para coordinar tu estadía en ${p.name}.</p>
+        <form id="inquiry-form">
+          <div class="field-row">
+            <div class="field"><label>Nombre *</label><input type="text" id="i-name" required></div>
+            <div class="field"><label>Apellido *</label><input type="text" id="i-lastname" required></div>
+          </div>
+          <div class="field-row">
+            <div class="field"><label>WhatsApp *</label><input type="tel" id="i-whatsapp" required placeholder="+54 9 223..."></div>
+            <div class="field"><label>Email *</label><input type="email" id="i-email" required></div>
+          </div>
+          <div class="field-row">
+            <div class="field"><label>Fecha de ingreso</label><input type="date" id="i-checkin"></div>
+            <div class="field"><label>Fecha de salida</label><input type="date" id="i-checkout"></div>
+          </div>
+          <div class="field"><label>Cantidad de personas</label><input type="number" id="i-guests" min="1"></div>
+          <div class="field"><label>Mensaje</label><textarea id="i-message" rows="3" placeholder="Contanos qué necesitás..."></textarea></div>
+          <button type="submit" class="btn btn-primary btn-block">Enviar consulta</button>
+        </form>
+      </div>
+    `;
+
+    let calMonth = new Date();
+    calMonth.setDate(1);
+
+    setupBooking();
+    setupCalendar();
+    setupInquiry();
+
+    function wspMessage(checkin, checkout, guests) {
+      let msg = `Hola MAR, quiero consultar por ${p.name}`;
+      if (checkin && checkout) msg += `, para las fechas ${MAR.fmtDate(checkin)} a ${MAR.fmtDate(checkout)}`;
+      if (guests) msg += ` (${guests} personas)`;
+      msg += ".";
+      return msg;
+    }
+    document.getElementById("wsp-top").addEventListener("click", (e) => {
+      e.preventDefault();
+      window.open(waLink(wspMessage()), "_blank");
+    });
+
+    function setupBooking() {
+      const ci = document.getElementById("b-checkin");
+      const co = document.getElementById("b-checkout");
+      const guestsEl = document.getElementById("b-guests");
+      const msg = document.getElementById("avail-msg");
+      ci.min = MAR.todayISO();
+
+      function check() {
+        co.min = ci.value || MAR.todayISO();
+        if (!ci.value || !co.value || co.value <= ci.value) { msg.innerHTML = ""; return; }
+        const ok = MAR.isRangeAvailable(p.id, ci.value, co.value);
+        msg.innerHTML = ok
+          ? `<span style="color:#177A4A">✓ Disponible para esas fechas</span>`
+          : `<span style="color:#A3134F">✕ No disponible, elegí otras fechas</span>`;
+      }
+      ci.addEventListener("change", check);
+      co.addEventListener("change", check);
+
+      document.getElementById("btn-consultar").addEventListener("click", () => {
+        document.getElementById("i-checkin").value = ci.value;
+        document.getElementById("i-checkout").value = co.value;
+        document.getElementById("i-guests").value = guestsEl.value;
+        document.getElementById("inquiry-section").scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+
+      document.getElementById("btn-reservar").addEventListener("click", () => {
+        if (!ci.value || !co.value || co.value <= ci.value) { toastPublic("Elegí fechas de ingreso y salida válidas."); return; }
+        if (!MAR.isRangeAvailable(p.id, ci.value, co.value)) { toastPublic("Esas fechas no están disponibles."); return; }
+        window.open(waLink(wspMessage(ci.value, co.value, guestsEl.value)), "_blank");
+      });
+    }
+
+    // ---- Calendario visual de disponibilidad ----
+    function setupCalendar() {
+      document.getElementById("cal-prev").addEventListener("click", () => { calMonth.setMonth(calMonth.getMonth() - 1); drawCalendar(); });
+      document.getElementById("cal-next").addEventListener("click", () => { calMonth.setMonth(calMonth.getMonth() + 1); drawCalendar(); });
+      drawCalendar();
+    }
+
+    function dayStatus(iso) {
+      const bookings = MAR.getBookingsForProperty(p.id).filter(b => b.status !== "cancelada");
+      const b = bookings.find(b => iso >= b.checkin && iso < b.checkout);
+      if (!b) return "disponible";
+      if (b.status === "ocupada") return "ocupado";
+      return "reservado"; // pendiente / confirmada / finalizada
+    }
+
+    function drawCalendar() {
+      const label = calMonth.toLocaleDateString("es-AR", { month: "long", year: "numeric" });
+      document.getElementById("cal-label").textContent = label.charAt(0).toUpperCase() + label.slice(1);
+      const year = calMonth.getFullYear(), month = calMonth.getMonth();
+      const firstDow = (new Date(year, month, 1).getDay() + 6) % 7; // lunes=0
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      const today = MAR.todayISO();
+
+      let html = ["L", "M", "M", "J", "V", "S", "D"].map(d => `<div class="dow">${d}</div>`).join("");
+      for (let i = 0; i < firstDow; i++) html += `<div></div>`;
+      for (let d = 1; d <= daysInMonth; d++) {
+        const iso = `${year}-${String(month + 1).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
+        const status = dayStatus(iso);
+        const past = iso < today ? " pasado" : "";
+        html += `<div class="avail-day ${status}${past}" title="${status}">${d}</div>`;
+      }
+      document.getElementById("avail-cal").innerHTML = html;
+    }
+
+    function setupInquiry() {
+      document.getElementById("inquiry-form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const data = {
+          propertyId: p.id,
+          name: document.getElementById("i-name").value.trim(),
+          lastname: document.getElementById("i-lastname").value.trim(),
+          whatsapp: document.getElementById("i-whatsapp").value.trim(),
+          email: document.getElementById("i-email").value.trim(),
+          checkin: document.getElementById("i-checkin").value,
+          checkout: document.getElementById("i-checkout").value,
+          guests: Number(document.getElementById("i-guests").value || 0),
+          message: document.getElementById("i-message").value.trim()
+        };
+        if (!data.name || !data.lastname || !data.whatsapp || !data.email) { toastPublic("Completá los datos obligatorios."); return; }
+        MAR.createInquiry(data);
+        document.getElementById("ok-modal").classList.add("show");
+        e.target.reset();
+      });
+    }
+  }
+
+  document.getElementById("ok-close").addEventListener("click", () => document.getElementById("ok-modal").classList.remove("show"));
+  document.getElementById("ok-close-2").addEventListener("click", () => document.getElementById("ok-modal").classList.remove("show"));
+
+  function toastPublic(msg) {
+    let el = document.querySelector(".toast");
+    if (!el) { el = document.createElement("div"); el.className = "toast"; document.body.appendChild(el); }
+    el.textContent = msg;
+    el.classList.add("show");
+    clearTimeout(el._t);
+    el._t = setTimeout(() => el.classList.remove("show"), 2600);
+  }
+
+  injectWhatsappFloat(p ? `Hola MAR, quiero consultar por ${p.name}.` : "Hola MAR, quiero consultar por una propiedad en Mar del Plata.");
+</script>
+</body>
+</html>
