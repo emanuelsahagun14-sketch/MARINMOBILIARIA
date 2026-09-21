@@ -3,87 +3,112 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contacto — MAR</title>
+<meta name="theme-color" content="#302822">
+<title>Contacto — MAR · Mar del Plata</title>
+<meta name="description" content="Escribinos y te ayudamos a encontrar tu lugar en Mar del Plata. Consultá por WhatsApp o completá el formulario.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-<nav class="nav">
+<nav class="site-nav">
   <div class="nav-inner">
     <a href="index.html" class="logo">MAR<span>.</span></a>
-    <button class="nav-toggle" aria-label="Menú">☰</button>
+    <button class="nav-toggle" aria-label="Abrir menú">☰</button>
     <div class="nav-links">
       <a href="index.html">Inicio</a>
       <a href="propiedades.html">Propiedades</a>
+      <a href="index.html#zonas">Zonas</a>
       <a href="contacto.html">Contacto</a>
-      <a href="admin/login.html" class="nav-cta">Administración</a>
+      <a href="contacto.html" class="nav-cta">Consultar</a>
     </div>
   </div>
 </nav>
 
-<div class="container reveal" style="padding:50px 20px 70px;max-width:980px">
-  <div class="tag-eyebrow">Contacto</div>
-  <h1 style="margin-bottom:8px">Escribinos</h1>
-  <p style="margin-bottom:30px;max-width:520px">Contanos qué estás buscando y te ayudamos a encontrar tu lugar en Mar del Plata.</p>
+<section class="page-head">
+  <div class="container">
+    <span class="tag-eyebrow">Contacto</span>
+    <h1>Empecemos tus vacaciones</h1>
+    <p style="margin-top:12px;max-width:52ch">Contanos qué estás buscando y te ayudamos a encontrar tu lugar frente al mar en Mar del Plata.</p>
+  </div>
+</section>
 
-  <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:28px;align-items:start">
+<div class="container" style="padding:36px 28px 80px;max-width:1040px">
+  <div class="contact-layout">
     <div class="form-card">
       <form id="contact-form">
         <div class="field-row">
-          <div class="field"><label>Nombre *</label><input type="text" id="c-name" required></div>
-          <div class="field"><label>Apellido *</label><input type="text" id="c-lastname" required></div>
+          <div class="field" style="flex:1"><label>Nombre *</label><input type="text" id="c-name" required></div>
+          <div class="field" style="flex:1"><label>Apellido *</label><input type="text" id="c-lastname" required></div>
         </div>
         <div class="field-row">
-          <div class="field"><label>WhatsApp *</label><input type="tel" id="c-whatsapp" required placeholder="+54 9 223..."></div>
-          <div class="field"><label>Email *</label><input type="email" id="c-email" required></div>
+          <div class="field" style="flex:1"><label>WhatsApp *</label><input type="tel" id="c-whatsapp" required placeholder="+54 9 223..."></div>
+          <div class="field" style="flex:1"><label>Email *</label><input type="email" id="c-email" required></div>
         </div>
         <div class="field">
           <label>Propiedad de interés</label>
           <select id="c-property"><option value="">No estoy seguro / cualquiera</option></select>
         </div>
         <div class="field-row">
-          <div class="field"><label>Fecha de ingreso</label><input type="date" id="c-checkin"></div>
-          <div class="field"><label>Fecha de salida</label><input type="date" id="c-checkout"></div>
+          <div class="field" style="flex:1"><label>Fecha de ingreso</label><input type="date" id="c-checkin"></div>
+          <div class="field" style="flex:1"><label>Fecha de salida</label><input type="date" id="c-checkout"></div>
         </div>
         <div class="field"><label>Cantidad de personas</label><input type="number" id="c-guests" min="1"></div>
         <div class="field"><label>Mensaje</label><textarea id="c-message" rows="4" placeholder="Contanos qué necesitás..."></textarea></div>
         <button type="submit" class="btn btn-primary btn-block">Enviar consulta</button>
       </form>
-      <div class="alert alert-ok" id="ok-msg" style="display:none;margin-top:18px">
+      <div class="alert-ok" id="ok-msg" style="display:none;margin-top:18px">
         ¡Gracias! Recibimos tu consulta y te vamos a contactar a la brevedad.
       </div>
     </div>
 
-    <div style="background:var(--negro);border-radius:var(--radius);padding:30px;color:#fff">
-      <div class="tag-eyebrow" style="color:var(--fucsia)">¿Preferís hablar directo?</div>
-      <h3 style="color:#fff;margin-bottom:14px">Escribinos por WhatsApp</h3>
-      <p style="color:rgba(255,255,255,.7);margin-bottom:20px">Te respondemos rápido, todos los días. Consultá disponibilidad, precios o coordiná tu reserva.</p>
-      <a href="#" id="wsp-direct" class="btn btn-wsp btn-block" style="margin-bottom:24px">💬 +54 9 223 300-3013</a>
-      <div style="border-top:1px solid rgba(255,255,255,.12);padding-top:20px">
-        <p style="color:rgba(255,255,255,.55);font-size:.82rem;margin-bottom:6px">📍 Mar del Plata, Argentina</p>
-        <p style="color:rgba(255,255,255,.55);font-size:.82rem;margin-bottom:0">🕐 Respuesta todos los días, de 9 a 21hs</p>
+    <div class="contact-side">
+      <span class="tag-eyebrow">¿Preferís hablar directo?</span>
+      <h3>Escribinos por WhatsApp</h3>
+      <p>Te respondemos rápido, todos los días. Consultá disponibilidad, precios o coordiná tu reserva.</p>
+      <a href="#" id="wsp-direct" class="btn btn-wsp btn-block">223 300-3013</a>
+      <div class="contact-detail">
+        <p class="foot-line">Mar del Plata, Argentina</p>
+        <p class="foot-line">Respondemos todos los días, de 9 a 21 hs</p>
       </div>
     </div>
   </div>
 </div>
-<style>@media(max-width:760px){.container[style*="980px"] > div[style*="grid-template-columns"]{grid-template-columns:1fr!important}}</style>
 
 <footer>
-  <div class="container">
+  <div class="footer-grid">
     <div>
-      <div class="logo" style="color:#fff;margin-bottom:10px">MAR<span>.</span></div>
-      <p style="color:var(--beige);opacity:.7;max-width:260px">Alquileres temporarios en Mar del Plata.</p>
+      <div class="logo">MAR<span>.</span></div>
+      <p class="foot-tag">Alquileres temporarios en Mar del Plata. Tu lugar frente al mar, todo el año.</p>
     </div>
     <div>
       <h4>Navegación</h4>
       <a href="index.html">Inicio</a>
       <a href="propiedades.html">Propiedades</a>
+      <a href="index.html#zonas">Zonas</a>
       <a href="contacto.html">Contacto</a>
     </div>
+    <div>
+      <h4>Zonas</h4>
+      <a href="propiedades.html?zone=Playa%20Grande">Playa Grande</a>
+      <a href="propiedades.html?zone=Varese">Varese</a>
+      <a href="propiedades.html?zone=Güemes">Güemes</a>
+      <a href="propiedades.html?zone=Los%20Troncos">Los Troncos</a>
+    </div>
+    <div>
+      <h4>Contacto</h4>
+      <a href="#" id="footer-wsp">WhatsApp · 223 300-3013</a>
+      <a href="contacto.html">Formulario de consulta</a>
+      <p class="foot-line">Mar del Plata, Argentina</p>
+      <a href="admin/login.html" style="opacity:.5;font-size:.82rem">Administración</a>
+    </div>
   </div>
-  <div class="footer-bottom">© 2026 MAR — Mar del Plata, Argentina</div>
+  <div class="footer-bottom">
+    <span>© 2026 MAR — Mar del Plata, Argentina</span>
+    <span>Tu lugar frente al mar.</span>
+  </div>
 </footer>
 
 <script src="assets/js/data.js"></script>
@@ -91,7 +116,7 @@
 <script src="assets/js/main.js"></script>
 <script>
   const sel = document.getElementById("c-property");
-  MAR.getProperties().forEach(p => {
+  MAR.getProperties().forEach((p) => {
     const opt = document.createElement("option");
     opt.value = p.id; opt.textContent = p.name;
     sel.appendChild(opt);
@@ -116,12 +141,12 @@
     document.getElementById("ok-msg").scrollIntoView({ behavior: "smooth", block: "nearest" });
   });
 
-  document.getElementById("wsp-direct").addEventListener("click", (e) => {
-    e.preventDefault();
-    window.open(waLink("Hola MAR, quiero consultar por una propiedad en Mar del Plata."), "_blank");
-  });
+  const wspMsg = "Hola MAR, quiero consultar por una propiedad en Mar del Plata.";
+  document.getElementById("wsp-direct").addEventListener("click", (e) => { e.preventDefault(); window.open(waLink(wspMsg), "_blank"); });
+  document.getElementById("footer-wsp").addEventListener("click", (e) => { e.preventDefault(); window.open(waLink(wspMsg), "_blank"); });
 
-  injectWhatsappFloat("Hola MAR, quiero consultar por una propiedad en Mar del Plata.");
+  setupNav();
+  injectWhatsappFloat(wspMsg);
 </script>
 </body>
 </html>
