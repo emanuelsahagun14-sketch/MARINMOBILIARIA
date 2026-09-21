@@ -3,31 +3,40 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Propiedades — MAR</title>
+<meta name="theme-color" content="#302822">
+<title>Propiedades — MAR · Mar del Plata</title>
+<meta name="description" content="Explorá casas y departamentos para alquiler temporario en Mar del Plata. Filtrá por zona, fechas, huéspedes y servicios.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-<nav class="nav">
+<nav class="site-nav">
   <div class="nav-inner">
     <a href="index.html" class="logo">MAR<span>.</span></a>
-    <button class="nav-toggle" aria-label="Menú">☰</button>
+    <button class="nav-toggle" aria-label="Abrir menú">☰</button>
     <div class="nav-links">
       <a href="index.html">Inicio</a>
       <a href="propiedades.html">Propiedades</a>
+      <a href="index.html#zonas">Zonas</a>
       <a href="contacto.html">Contacto</a>
-      <a href="admin/login.html" class="nav-cta">Administración</a>
+      <a href="contacto.html" class="nav-cta">Consultar</a>
     </div>
   </div>
 </nav>
 
-<div class="container" style="padding-top:40px">
-  <div class="tag-eyebrow">Catálogo</div>
-  <h1 style="font-size:2.2rem;margin-bottom:24px">Propiedades disponibles</h1>
+<section class="page-head">
+  <div class="container">
+    <span class="tag-eyebrow">Catálogo</span>
+    <h1 style="max-width:16ch">Encontrá tu lugar en Mar del Plata</h1>
+    <p style="margin-top:12px;max-width:52ch">Casas y departamentos seleccionados en las mejores zonas de la ciudad. Ajustá los filtros y encontrá el ideal para tus fechas.</p>
+  </div>
+</section>
 
-  <div class="filters-bar" id="filters">
+<div class="container" style="padding-top:26px">
+  <div class="filters-panel" id="filters">
     <select id="f-zone"><option value="">Zona: todas</option></select>
     <select id="f-type">
       <option value="">Tipo: todos</option>
@@ -49,43 +58,62 @@
       <option value="3">3+</option>
       <option value="4">4+</option>
     </select>
-    <input type="number" id="f-price" placeholder="Precio máx. USD/noche" style="width:190px">
-    <input type="date" id="f-checkin" title="Ingreso">
-    <input type="date" id="f-checkout" title="Salida">
+    <input type="number" id="f-price" placeholder="Precio máx. USD/noche" style="width:180px">
+    <input type="date" id="f-checkin" title="Ingreso" aria-label="Fecha de ingreso">
+    <input type="date" id="f-checkout" title="Salida" aria-label="Fecha de salida">
   </div>
 
-  <div class="filters-bar" style="margin-top:-18px">
-    <span class="chip" data-amenity="pileta">🏊 Pileta</span>
-    <span class="chip" data-amenity="parrilla">🔥 Parrilla</span>
-    <span class="chip" data-amenity="cochera">🚗 Cochera</span>
-    <span class="chip" data-amenity="mascotas">🐾 Mascotas</span>
-    <span class="chip" data-amenity="vistaMar">🌊 Vista al mar</span>
-    <span class="chip" data-amenity="aire">❄️ Aire acondicionado</span>
-    <span class="chip" data-amenity="wifi">📶 Wi-Fi</span>
+  <div class="chips-row">
+    <span class="chip" data-amenity="pileta">Pileta</span>
+    <span class="chip" data-amenity="parrilla">Parrilla</span>
+    <span class="chip" data-amenity="cochera">Cochera</span>
+    <span class="chip" data-amenity="mascotas">Pet friendly</span>
+    <span class="chip" data-amenity="vistaMar">Vista al mar</span>
+    <span class="chip" data-amenity="aire">Aire</span>
+    <span class="chip" data-amenity="wifi">Wi-Fi</span>
   </div>
 
-  <p id="result-count" style="margin:20px 0;color:var(--gris);font-size:.9rem"></p>
-  <div class="grid-props" id="grid" style="margin-bottom:60px"></div>
+  <p id="result-count" class="result-count"></p>
+  <div class="props-grid" id="grid" style="margin-bottom:70px"></div>
   <div class="empty" id="empty-state" style="display:none">
     <div class="ico">🔍</div>
     <p>No encontramos propiedades con esos filtros. Probá ajustando la búsqueda.</p>
+    <a href="contacto.html" class="btn btn-primary" style="margin-top:16px">Consultanos qué buscás</a>
   </div>
 </div>
 
 <footer>
-  <div class="container">
+  <div class="footer-grid">
     <div>
-      <div class="logo" style="color:#fff;margin-bottom:10px">MAR<span>.</span></div>
-      <p style="color:var(--beige);opacity:.7;max-width:260px">Alquileres temporarios en Mar del Plata.</p>
+      <div class="logo">MAR<span>.</span></div>
+      <p class="foot-tag">Alquileres temporarios en Mar del Plata. Tu lugar frente al mar, todo el año.</p>
     </div>
     <div>
       <h4>Navegación</h4>
       <a href="index.html">Inicio</a>
       <a href="propiedades.html">Propiedades</a>
+      <a href="index.html#zonas">Zonas</a>
       <a href="contacto.html">Contacto</a>
     </div>
+    <div>
+      <h4>Zonas</h4>
+      <a href="propiedades.html?zone=Playa%20Grande">Playa Grande</a>
+      <a href="propiedades.html?zone=Varese">Varese</a>
+      <a href="propiedades.html?zone=Güemes">Güemes</a>
+      <a href="propiedades.html?zone=Los%20Troncos">Los Troncos</a>
+    </div>
+    <div>
+      <h4>Contacto</h4>
+      <a href="#" id="footer-wsp">WhatsApp · 223 300-3013</a>
+      <a href="contacto.html">Formulario de consulta</a>
+      <p class="foot-line">Mar del Plata, Argentina</p>
+      <a href="admin/login.html" style="opacity:.5;font-size:.82rem">Administración</a>
+    </div>
   </div>
-  <div class="footer-bottom">© 2026 MAR — Mar del Plata, Argentina</div>
+  <div class="footer-bottom">
+    <span>© 2026 MAR — Mar del Plata, Argentina</span>
+    <span>Tu lugar frente al mar.</span>
+  </div>
 </footer>
 
 <script src="assets/js/data.js"></script>
@@ -94,40 +122,38 @@
 <script>
   const activeAmenities = new Set();
 
-  const zones = [...new Set(MAR.getProperties().map(p => p.zone))];
   const zoneSelect = document.getElementById("f-zone");
-  zones.forEach(z => {
+  MAR.getZones().forEach((z) => {
     const opt = document.createElement("option");
     opt.value = z; opt.textContent = z;
     zoneSelect.appendChild(opt);
   });
 
-  // Prefill desde query string (buscador del home)
+  // Prefill desde query string
   const params = new URLSearchParams(window.location.search);
   if (params.get("zone")) document.getElementById("f-zone").value = params.get("zone");
-  if (params.get("guests")) document.getElementById("f-guests").value = "";
   if (params.get("checkin")) document.getElementById("f-checkin").value = params.get("checkin");
   if (params.get("checkout")) document.getElementById("f-checkout").value = params.get("checkout");
   const qGuests = params.get("guests");
 
   function propCard(p) {
     return `
-    <a class="card-prop" href="propiedad.html?id=${p.id}">
-      <div class="thumb">
-        <span class="zone-tag">${p.zone}</span>
+    <a class="prop-card" href="propiedad.html?id=${p.id}">
+      <div class="prop-media">
+        <span class="prop-zone">${p.zone}</span>
         <img src="${p.photos[0]}" alt="${p.name}" loading="lazy">
       </div>
-      <div class="body">
-        <h3>${p.name}</h3>
-        <div class="meta">${p.zone}</div>
-        <div class="specs">
-          <span>👥 Hasta ${p.guests}</span>
-          <span>🛏️ ${p.bedrooms} hab.</span>
-          <span>🛁 ${p.bathrooms} baños</span>
+      <div class="prop-info">
+        <div class="prop-loc">${p.zone}</div>
+        <h3 class="prop-name">${p.name}</h3>
+        <div class="prop-specs">
+          <span>Hasta ${p.guests} huéspedes</span>
+          <span>${p.bedrooms} hab.</span>
+          <span>${p.bathrooms} baños</span>
         </div>
-        <div class="price-row">
-          <div class="price">USD ${p.price} <small>/ noche</small></div>
-          <span class="btn btn-sm btn-ghost">Ver</span>
+        <div class="prop-price-row">
+          <div class="prop-price">USD ${p.price} <small>/ noche</small></div>
+          <span class="prop-cta">Ver más →</span>
         </div>
       </div>
     </a>`;
@@ -143,21 +169,24 @@
     const checkout = document.getElementById("f-checkout").value;
 
     let list = MAR.getProperties();
-    if (zone) list = list.filter(p => p.zone === zone);
-    if (type) list = list.filter(p => p.type === type);
-    if (guests) list = list.filter(p => p.guests >= guests);
-    if (bedrooms) list = list.filter(p => p.bedrooms >= bedrooms);
-    if (priceMax) list = list.filter(p => p.price <= priceMax);
-    if (activeAmenities.size) list = list.filter(p => [...activeAmenities].every(a => p.amenities.includes(a)));
-    if (checkin && checkout) list = list.filter(p => MAR.isRangeAvailable(p.id, checkin, checkout));
+    if (zone) list = list.filter((p) => p.zone === zone);
+    if (type) list = list.filter((p) => p.type === type);
+    if (guests) list = list.filter((p) => p.guests >= guests);
+    if (bedrooms) list = list.filter((p) => p.bedrooms >= bedrooms);
+    if (priceMax) list = list.filter((p) => p.price <= priceMax);
+    if (activeAmenities.size) list = list.filter((p) => [...activeAmenities].every((a) => p.amenities.includes(a)));
+    if (checkin && checkout) list = list.filter((p) => MAR.isRangeAvailable(p.id, checkin, checkout));
 
-    document.getElementById("grid").innerHTML = list.map(propCard).join("");
-    document.getElementById("result-count").textContent = `${list.length} propiedad${list.length === 1 ? "" : "es"} encontrada${list.length === 1 ? "" : "s"}`;
+    const grid = document.getElementById("grid");
+    grid.innerHTML = list.map(propCard).join("");
+    grid.classList.remove("in"); void grid.offsetWidth; grid.classList.add("reveal-stagger", "in");
+    document.getElementById("result-count").textContent =
+      `${list.length} propiedad${list.length === 1 ? "" : "es"} encontrada${list.length === 1 ? "" : "s"}`;
     document.getElementById("empty-state").style.display = list.length ? "none" : "block";
   }
 
-  document.querySelectorAll("#filters select, #filters input").forEach(el => el.addEventListener("input", applyFilters));
-  document.querySelectorAll(".chip").forEach(chip => {
+  document.querySelectorAll("#filters select, #filters input").forEach((el) => el.addEventListener("input", applyFilters));
+  document.querySelectorAll(".chip").forEach((chip) => {
     chip.addEventListener("click", () => {
       const a = chip.dataset.amenity;
       if (activeAmenities.has(a)) { activeAmenities.delete(a); chip.classList.remove("active"); }
@@ -167,6 +196,13 @@
   });
 
   applyFilters();
+
+  document.getElementById("footer-wsp").addEventListener("click", (e) => {
+    e.preventDefault();
+    window.open(waLink("Hola MAR, quiero consultar por una propiedad en Mar del Plata."), "_blank");
+  });
+
+  setupNav();
   injectWhatsappFloat("Hola MAR, quiero consultar por una propiedad en Mar del Plata.");
 </script>
 </body>

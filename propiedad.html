@@ -3,47 +3,69 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#302822">
 <title id="page-title">Propiedad — MAR</title>
+<meta name="description" content="Ficha de propiedad para alquiler temporario en Mar del Plata. Fotos, servicios, disponibilidad y consulta directa por WhatsApp.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-<nav class="nav">
+<nav class="site-nav">
   <div class="nav-inner">
     <a href="index.html" class="logo">MAR<span>.</span></a>
-    <button class="nav-toggle" aria-label="Menú">☰</button>
+    <button class="nav-toggle" aria-label="Abrir menú">☰</button>
     <div class="nav-links">
       <a href="index.html">Inicio</a>
       <a href="propiedades.html">Propiedades</a>
+      <a href="index.html#zonas">Zonas</a>
       <a href="contacto.html">Contacto</a>
-      <a href="admin/login.html" class="nav-cta">Administración</a>
+      <a href="contacto.html" class="nav-cta">Consultar</a>
     </div>
   </div>
 </nav>
 
-<div class="container" id="content" style="padding-top:30px;padding-bottom:70px"></div>
+<div class="container detail-wrap" id="content" style="padding-bottom:70px"></div>
 
 <footer>
-  <div class="container">
+  <div class="footer-grid">
     <div>
-      <div class="logo" style="color:#fff;margin-bottom:10px">MAR<span>.</span></div>
-      <p style="color:var(--beige);opacity:.7;max-width:260px">Alquileres temporarios en Mar del Plata.</p>
+      <div class="logo">MAR<span>.</span></div>
+      <p class="foot-tag">Alquileres temporarios en Mar del Plata. Tu lugar frente al mar, todo el año.</p>
     </div>
     <div>
       <h4>Navegación</h4>
       <a href="index.html">Inicio</a>
       <a href="propiedades.html">Propiedades</a>
+      <a href="index.html#zonas">Zonas</a>
       <a href="contacto.html">Contacto</a>
     </div>
+    <div>
+      <h4>Zonas</h4>
+      <a href="propiedades.html?zone=Playa%20Grande">Playa Grande</a>
+      <a href="propiedades.html?zone=Varese">Varese</a>
+      <a href="propiedades.html?zone=Güemes">Güemes</a>
+      <a href="propiedades.html?zone=Los%20Troncos">Los Troncos</a>
+    </div>
+    <div>
+      <h4>Contacto</h4>
+      <a href="#" id="footer-wsp">WhatsApp · 223 300-3013</a>
+      <a href="contacto.html">Formulario de consulta</a>
+      <p class="foot-line">Mar del Plata, Argentina</p>
+      <a href="admin/login.html" style="opacity:.5;font-size:.82rem">Administración</a>
+    </div>
   </div>
-  <div class="footer-bottom">© 2026 MAR — Mar del Plata, Argentina</div>
+  <div class="footer-bottom">
+    <span>© 2026 MAR — Mar del Plata, Argentina</span>
+    <span>Tu lugar frente al mar.</span>
+  </div>
 </footer>
 
 <div class="modal-backdrop" id="ok-modal">
   <div class="modal">
-    <div class="modal-head"><h3>¡Consulta enviada!</h3><button class="modal-close" id="ok-close">✕</button></div>
+    <div class="modal-head"><h3>¡Consulta enviada!</h3><button class="modal-close" id="ok-close" aria-label="Cerrar">✕</button></div>
     <p>Gracias por escribirnos. Recibimos tus datos y te vamos a contactar a la brevedad para coordinar tu estadía en MAR.</p>
     <button class="btn btn-dark btn-block" id="ok-close-2">Entendido</button>
   </div>
@@ -58,67 +80,67 @@
   const content = document.getElementById("content");
 
   if (!p) {
-    content.innerHTML = `<div class="empty"><div class="ico">🏝️</div><p>No encontramos esa propiedad.</p><a href="propiedades.html" class="btn btn-primary" style="margin-top:14px">Ver todas las propiedades</a></div>`;
+    content.innerHTML = `<div class="empty" style="padding-top:60px"><div class="ico">🏝️</div><p>No encontramos esa propiedad.</p><a href="propiedades.html" class="btn btn-primary" style="margin-top:16px">Ver todas las propiedades</a></div>`;
+    injectWhatsappFloat("Hola MAR, quiero consultar por una propiedad en Mar del Plata.");
   } else {
     document.getElementById("page-title").textContent = p.name + " — MAR";
     render();
+    injectWhatsappFloat(`Hola MAR, quiero consultar por ${p.name}.`);
   }
 
   function render() {
     content.innerHTML = `
-      <div style="font-size:.85rem;color:var(--gris);margin-bottom:16px">
-        <a href="index.html" style="color:var(--gris)">Inicio</a> /
-        <a href="propiedades.html" style="color:var(--gris)">Propiedades</a> /
-        <span style="color:var(--negro)">${p.name}</span>
+      <div class="breadcrumb">
+        <a href="index.html">Inicio</a> · <a href="propiedades.html">Propiedades</a> · <span style="color:var(--tinta)">${p.name}</span>
       </div>
 
       <div class="gallery">
-        ${p.photos.slice(0, 5).map(src => `<a href="${src}" target="_blank"><img src="${src}" alt="${p.name}"></a>`).join("")}
+        ${p.photos.slice(0, 5).map((src) => `<a href="${src}" target="_blank" rel="noopener"><img src="${src}" alt="${p.name}" loading="lazy"></a>`).join("")}
       </div>
 
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-top:28px;flex-wrap:wrap;gap:10px">
+      <div class="detail-header">
         <div>
-          <div class="tag-eyebrow">${p.zone}</div>
-          <h1 style="font-size:2rem">${p.name}</h1>
-          <p style="color:var(--gris)">${p.address}</p>
+          <span class="tag-eyebrow">${p.zone}</span>
+          <h1>${p.name}</h1>
+          <p class="addr">${p.address}</p>
         </div>
-        <a href="#" class="btn btn-wsp" id="wsp-top">💬 WhatsApp</a>
+        <a href="#" class="btn btn-wsp btn-lg" id="wsp-top">Consultar por WhatsApp</a>
       </div>
 
       <div class="prop-layout">
         <div>
-          <p>${p.description}</p>
+          <p class="detail-lead">${p.description}</p>
 
           <div class="badge-row">
-            <span class="badge">👥 Hasta ${p.guests} huéspedes</span>
-            <span class="badge">🛏️ ${p.bedrooms} habitaciones</span>
-            <span class="badge">🛌 ${p.beds} camas</span>
-            <span class="badge">🛁 ${p.bathrooms} baños</span>
+            <span class="badge">Hasta ${p.guests} huéspedes</span>
+            <span class="badge">${p.bedrooms} habitaciones</span>
+            <span class="badge">${p.beds} camas</span>
+            <span class="badge">${p.bathrooms} baños</span>
           </div>
 
-          <h3 style="margin-top:30px">Servicios y características</h3>
+          <h3 class="detail-section-title">Servicios y características</h3>
           <ul class="amenities">
-            ${p.amenities.map(a => `<li>${MAR.AMENITY_ICONS[a] || "•"} ${MAR.AMENITY_LABELS[a] || a}</li>`).join("")}
+            ${p.amenities.map((a) => `<li>${MAR.AMENITY_ICONS[a] || "•"} ${MAR.AMENITY_LABELS[a] || a}</li>`).join("")}
           </ul>
 
-          <h3 style="margin-top:30px">Reglas de la casa</h3>
+          <h3 class="detail-section-title">Reglas de la casa</h3>
           <p>${p.rules}</p>
           <div class="field-row">
-            <div><strong>Check-in</strong><br><span style="color:var(--gris)">A partir de las ${p.checkin}</span></div>
-            <div><strong>Check-out</strong><br><span style="color:var(--gris)">Hasta las ${p.checkout}</span></div>
+            <div><strong>Check-in</strong><br><span style="color:var(--marron)">A partir de las ${p.checkin}</span></div>
+            <div><strong>Check-out</strong><br><span style="color:var(--marron)">Hasta las ${p.checkout}</span></div>
           </div>
 
-          <h3 style="margin-top:34px">Disponibilidad</h3>
-          <div id="avail-controls" style="display:flex;gap:10px;align-items:center;margin-bottom:6px">
-            <button class="icon-btn" id="cal-prev">‹</button>
-            <strong id="cal-label" style="min-width:170px;text-align:center;display:inline-block"></strong>
-            <button class="icon-btn" id="cal-next">›</button>
+          <h3 class="detail-section-title">Disponibilidad</h3>
+          <div id="avail-controls" style="display:flex;gap:10px;align-items:center;margin-bottom:12px">
+            <button class="icon-btn" id="cal-prev" aria-label="Mes anterior">‹</button>
+            <strong id="cal-label" style="min-width:180px;text-align:center;display:inline-block;font-family:var(--serif)"></strong>
+            <button class="icon-btn" id="cal-next" aria-label="Mes siguiente">›</button>
           </div>
           <div class="avail-cal" id="avail-cal"></div>
           <div class="cal-legend">
-            <span><span class="dot" style="background:#E4F6EC"></span>Disponible</span>
-            <span><span class="dot" style="background:#FDE7DC"></span>Reservado</span>
-            <span><span class="dot" style="background:#FBE0E8"></span>Ocupado</span>
+            <span><span class="dot" style="background:#E7F1E8"></span>Disponible</span>
+            <span><span class="dot" style="background:#F3E7D6"></span>Reservado</span>
+            <span><span class="dot" style="background:#EEDFD5"></span>Ocupado</span>
           </div>
         </div>
 
@@ -137,21 +159,31 @@
         </div>
       </div>
 
-      <div class="form-card" id="inquiry-section" style="max-width:640px;margin-top:50px">
-        <h3>Formulario de consulta</h3>
-        <p style="margin-bottom:18px">Completá tus datos y te contactamos para coordinar tu estadía en ${p.name}.</p>
+      <div class="experience">
+        <span class="tag-eyebrow">Viví esta experiencia</span>
+        <h2>Más que un lugar para dormir</h2>
+        <p style="max-width:60ch;margin-top:12px">Imaginá tus mañanas cerca del mar, las tardes al aire libre y las noches con la mejor compañía. En ${p.name} cada detalle está pensado para que tus vacaciones en Mar del Plata sean inolvidables.</p>
+        <div class="experience-grid">
+          ${p.photos.slice(1, 4).map((src) => `<img src="${src}" alt="Detalle de ${p.name}" loading="lazy">`).join("")}
+        </div>
+      </div>
+
+      <div class="form-card" id="inquiry-section" style="max-width:660px;margin:50px auto 0">
+        <span class="tag-eyebrow">Consulta</span>
+        <h3 style="margin-bottom:6px">Reservá tu estadía en ${p.name}</h3>
+        <p style="margin-bottom:20px">Completá tus datos y te contactamos para coordinar todo.</p>
         <form id="inquiry-form">
           <div class="field-row">
-            <div class="field"><label>Nombre *</label><input type="text" id="i-name" required></div>
-            <div class="field"><label>Apellido *</label><input type="text" id="i-lastname" required></div>
+            <div class="field" style="flex:1"><label>Nombre *</label><input type="text" id="i-name" required></div>
+            <div class="field" style="flex:1"><label>Apellido *</label><input type="text" id="i-lastname" required></div>
           </div>
           <div class="field-row">
-            <div class="field"><label>WhatsApp *</label><input type="tel" id="i-whatsapp" required placeholder="+54 9 223..."></div>
-            <div class="field"><label>Email *</label><input type="email" id="i-email" required></div>
+            <div class="field" style="flex:1"><label>WhatsApp *</label><input type="tel" id="i-whatsapp" required placeholder="+54 9 223..."></div>
+            <div class="field" style="flex:1"><label>Email *</label><input type="email" id="i-email" required></div>
           </div>
           <div class="field-row">
-            <div class="field"><label>Fecha de ingreso</label><input type="date" id="i-checkin"></div>
-            <div class="field"><label>Fecha de salida</label><input type="date" id="i-checkout"></div>
+            <div class="field" style="flex:1"><label>Fecha de ingreso</label><input type="date" id="i-checkin"></div>
+            <div class="field" style="flex:1"><label>Fecha de salida</label><input type="date" id="i-checkout"></div>
           </div>
           <div class="field"><label>Cantidad de personas</label><input type="number" id="i-guests" min="1"></div>
           <div class="field"><label>Mensaje</label><textarea id="i-message" rows="3" placeholder="Contanos qué necesitás..."></textarea></div>
@@ -211,7 +243,6 @@
       });
     }
 
-    // ---- Calendario visual de disponibilidad ----
     function setupCalendar() {
       document.getElementById("cal-prev").addEventListener("click", () => { calMonth.setMonth(calMonth.getMonth() - 1); drawCalendar(); });
       document.getElementById("cal-next").addEventListener("click", () => { calMonth.setMonth(calMonth.getMonth() + 1); drawCalendar(); });
@@ -219,22 +250,22 @@
     }
 
     function dayStatus(iso) {
-      const bookings = MAR.getBookingsForProperty(p.id).filter(b => b.status !== "cancelada");
-      const b = bookings.find(b => iso >= b.checkin && iso < b.checkout);
+      const bookings = MAR.getBookingsForProperty(p.id).filter((b) => b.status !== "cancelada");
+      const b = bookings.find((b) => iso >= b.checkin && iso < b.checkout);
       if (!b) return "disponible";
       if (b.status === "ocupada") return "ocupado";
-      return "reservado"; // pendiente / confirmada / finalizada
+      return "reservado";
     }
 
     function drawCalendar() {
       const label = calMonth.toLocaleDateString("es-AR", { month: "long", year: "numeric" });
       document.getElementById("cal-label").textContent = label.charAt(0).toUpperCase() + label.slice(1);
       const year = calMonth.getFullYear(), month = calMonth.getMonth();
-      const firstDow = (new Date(year, month, 1).getDay() + 6) % 7; // lunes=0
+      const firstDow = (new Date(year, month, 1).getDay() + 6) % 7;
       const daysInMonth = new Date(year, month + 1, 0).getDate();
       const today = MAR.todayISO();
 
-      let html = ["L", "M", "M", "J", "V", "S", "D"].map(d => `<div class="dow">${d}</div>`).join("");
+      let html = ["L", "M", "M", "J", "V", "S", "D"].map((d) => `<div class="dow">${d}</div>`).join("");
       for (let i = 0; i < firstDow; i++) html += `<div></div>`;
       for (let d = 1; d <= daysInMonth; d++) {
         const iso = `${year}-${String(month + 1).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
@@ -269,17 +300,12 @@
 
   document.getElementById("ok-close").addEventListener("click", () => document.getElementById("ok-modal").classList.remove("show"));
   document.getElementById("ok-close-2").addEventListener("click", () => document.getElementById("ok-modal").classList.remove("show"));
+  document.getElementById("footer-wsp").addEventListener("click", (e) => {
+    e.preventDefault();
+    window.open(waLink(p ? `Hola MAR, quiero consultar por ${p.name}.` : "Hola MAR, quiero consultar por una propiedad en Mar del Plata."), "_blank");
+  });
 
-  function toastPublic(msg) {
-    let el = document.querySelector(".toast");
-    if (!el) { el = document.createElement("div"); el.className = "toast"; document.body.appendChild(el); }
-    el.textContent = msg;
-    el.classList.add("show");
-    clearTimeout(el._t);
-    el._t = setTimeout(() => el.classList.remove("show"), 2600);
-  }
-
-  injectWhatsappFloat(p ? `Hola MAR, quiero consultar por ${p.name}.` : "Hola MAR, quiero consultar por una propiedad en Mar del Plata.");
+  setupNav();
 </script>
 </body>
 </html>

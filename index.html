@@ -3,38 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MAR — Alquileres temporarios en Mar del Plata</title>
-<meta name="description" content="Encontrá tu lugar en Mar del Plata. Casas y departamentos para alquiler temporario, cerca del mar.">
+<meta name="theme-color" content="#302822">
+<title>MAR — Alquileres temporarios premium en Mar del Plata</title>
+<meta name="description" content="Encontrá tu lugar frente al mar. Casas y departamentos seleccionados para alquiler temporario en las mejores zonas de Mar del Plata.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-<nav class="nav">
+<nav class="site-nav">
   <div class="nav-inner">
     <a href="index.html" class="logo">MAR<span>.</span></a>
-    <button class="nav-toggle" aria-label="Menú">☰</button>
+    <button class="nav-toggle" aria-label="Abrir menú">☰</button>
     <div class="nav-links">
       <a href="index.html">Inicio</a>
       <a href="propiedades.html">Propiedades</a>
+      <a href="index.html#zonas">Zonas</a>
       <a href="contacto.html">Contacto</a>
-      <a href="admin/login.html" class="nav-cta">Administración</a>
+      <a href="contacto.html" class="nav-cta">Consultar</a>
     </div>
   </div>
 </nav>
 
-<header class="hero-photo" style="background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&amp;w=2400&amp;auto=format&amp;fit=crop')">
-  <div class="hero-photo-inner">
-    <div class="hero-eyebrow">Mar del Plata</div>
+<header class="hero">
+  <div class="hero-bg" style="background-image:url('assets/img/hero-mar-del-plata.jpg')"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Mar del Plata · Alquileres temporarios</div>
     <h1>Tu lugar frente al mar</h1>
-    <p class="lead">Casas y departamentos con la mejor ubicación de la ciudad, listos para tu próxima estadía.</p>
+    <p class="lead">Casas y departamentos seleccionados en las mejores zonas de la ciudad. Viví Mar del Plata a tu manera, desde el primer día de vacaciones.</p>
+    <div class="hero-cta-row">
+      <a href="propiedades.html" class="btn btn-light btn-lg">Ver propiedades</a>
+      <a href="index.html#frente-al-mar" class="btn btn-outline btn-lg" style="color:#fff;border-color:rgba(255,255,255,.5)">Descubrí MAR</a>
+    </div>
   </div>
-  <div class="hero-scroll-cue"><span></span>Descubrí más</div>
+  <div class="hero-scroll"><span></span>Descubrí más</div>
 </header>
 
-<div class="search-float-wrap">
-  <form class="search-box" id="search-form">
+<div class="search-wrap">
+  <form class="search-box" id="search-form" aria-label="Buscador de propiedades">
     <div class="search-field">
       <label for="s-checkin">Ingreso</label>
       <input type="date" id="s-checkin" name="checkin">
@@ -49,157 +57,203 @@
     </div>
     <div class="search-field">
       <label for="s-zone">Zona</label>
-      <select id="s-zone" name="zone">
-        <option value="">Todas</option>
-      </select>
+      <select id="s-zone" name="zone"><option value="">Todas las zonas</option></select>
     </div>
     <button type="submit" class="btn btn-primary">Buscar</button>
   </form>
 </div>
 
-<div class="trust-bar reveal-stagger">
-  <div class="trust-item"><strong id="trust-count" data-count="6">0</strong><span>propiedades en las mejores zonas</span></div>
-  <div class="trust-item"><strong data-count="100" data-suffix="%">0%</strong><span>de las consultas por WhatsApp</span></div>
-  <div class="trust-item"><strong data-count="3">0</strong><span>temporadas: verano, fines de semana largos y todo el año</span></div>
+<div class="trust-bar reveal-stagger" data-count-group>
+  <div class="trust-item"><strong data-count="6">0</strong><span>propiedades en las mejores zonas</span></div>
+  <div class="trust-item"><strong data-count="100" data-suffix="%">0%</strong><span>de las consultas resueltas por WhatsApp</span></div>
+  <div class="trust-item"><strong data-count="9">0</strong><span>de la mañana a la noche, respondemos todos los días</span></div>
 </div>
 
-<section class="section reveal" style="padding-bottom:20px">
+<!-- Collage Mar del Plata -->
+<section class="section" style="padding-bottom:24px">
   <div class="container">
-    <div class="tag-eyebrow" style="text-align:center;display:block">Mar del Plata</div>
-    <h2 style="text-align:center;margin-bottom:34px">Verano, costa y ciudad, todo el año</h2>
+    <div class="center reveal" style="max-width:640px;margin:0 auto 40px">
+      <span class="tag-eyebrow">Mar del Plata</span>
+      <h2>Verano, costa y ciudad, todo el año</h2>
+    </div>
     <div class="mdq-collage reveal-stagger">
       <div class="mdq-item mdq-big">
-        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop" alt="Costa de Mar del Plata" loading="lazy">
-        <span>El mar, siempre cerca</span>
-      </div>
-      <div class="mdq-item">
-        <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?q=80&w=900&auto=format&fit=crop" alt="Atardecer en la costa" loading="lazy">
-        <span>Atardeceres inolvidables</span>
+        <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?q=80&w=1400&auto=format&fit=crop" alt="Atardecer sobre la costa de Mar del Plata" loading="lazy">
+        <span>Atardeceres frente al mar</span>
       </div>
       <div class="mdq-item">
         <img src="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?q=80&w=900&auto=format&fit=crop" alt="Verano en la playa" loading="lazy">
-        <span>Verano en la costa</span>
+        <span>Playa Grande</span>
       </div>
       <div class="mdq-item">
-        <img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?q=80&w=900&auto=format&fit=crop" alt="Playas de Mar del Plata" loading="lazy">
-        <span>Playas para disfrutar</span>
+        <img src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?q=80&w=900&auto=format&fit=crop" alt="Costa y rambla" loading="lazy">
+        <span>La rambla</span>
+      </div>
+      <div class="mdq-item">
+        <img src="https://images.unsplash.com/photo-1505228395891-9a51e7e86bf6?q=80&w=900&auto=format&fit=crop" alt="Arena y mar" loading="lazy">
+        <span>Días de arena y sol</span>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section reveal">
+<!-- Propiedades destacadas -->
+<section class="section" style="padding-top:40px">
   <div class="container">
-    <div class="section-head">
+    <div class="section-head reveal">
       <div>
-        <div class="tag-eyebrow">Propiedades</div>
-        <h2>Nuestras casas y departamentos</h2>
+        <span class="tag-eyebrow">Selección MAR</span>
+        <h2>Propiedades destacadas</h2>
       </div>
       <a href="propiedades.html" class="btn btn-outline">Ver todas</a>
     </div>
-    <div class="grid-props reveal-stagger" id="featured-grid"></div>
+    <div class="props-grid reveal-stagger" id="featured-grid"></div>
   </div>
 </section>
 
-<section class="why-split reveal">
-  <div class="photo">
-    <img src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?q=80&w=1200&auto=format&fit=crop" alt="Casa MAR con vista al mar">
-  </div>
-  <div>
-    <div class="tag-eyebrow">Por qué elegir MAR</div>
-    <h2 style="margin-bottom:6px">Alquilar acá es simple, de verdad</h2>
-    <p>Sin intermediarios interminables ni letra chica. Elegís fechas, consultás por WhatsApp y coordinamos todo directo con vos.</p>
-    <ul>
-      <li><span class="ico">📍</span><div><strong>Ubicaciones elegidas</strong><br>Playa Grande, Varese, Los Troncos, Chauvin y Chapadmalal.</div></li>
-      <li><span class="ico">💬</span><div><strong>Respuesta inmediata</strong><br>Coordinamos todo por WhatsApp, sin vueltas.</div></li>
-      <li><span class="ico">🔑</span><div><strong>Check-in sin sorpresas</strong><br>Fechas y disponibilidad siempre actualizadas.</div></li>
-    </ul>
+<!-- Inmersiva: Tu lugar frente al mar -->
+<section class="immersive" id="frente-al-mar" style="background-image:url('https://images.unsplash.com/photo-1502209877429-c6d9cf5c8f0d?q=80&w=2200&auto=format&fit=crop')">
+  <div class="immersive-inner">
+    <div class="immersive-card reveal">
+      <span class="tag-eyebrow">La experiencia MAR</span>
+      <h2>Tu lugar frente al mar</h2>
+      <p>Elegimos cada propiedad pensando en cómo querés vivir tus vacaciones: ubicaciones inmejorables, espacios cálidos y ese detalle que hace que quieras volver. Vos elegís las fechas, del resto nos ocupamos nosotros.</p>
+      <a href="propiedades.html" class="btn btn-light btn-lg">Encontrá tu lugar</a>
+    </div>
   </div>
 </section>
 
-<section class="section reveal" style="background:var(--beige);padding-top:60px;padding-bottom:60px">
-  <div class="container" style="text-align:center;max-width:720px">
-    <div class="tag-eyebrow">Cómo funciona</div>
-    <h2 style="margin-bottom:30px">Reservar en MAR es simple</h2>
-    <div class="reveal-stagger steps-grid" style="text-align:left">
-      <div>
-        <div style="font-family:'Fraunces',serif;font-size:1.6rem;color:var(--fucsia);margin-bottom:8px">01</div>
-        <p><strong style="color:var(--negro)">Elegí fechas</strong><br>Buscá disponibilidad para las fechas que necesitás.</p>
+<!-- Editorial: por qué elegir MAR -->
+<section class="section">
+  <div class="container">
+    <div class="editorial">
+      <div class="photo-frame reveal">
+        <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=1200&auto=format&fit=crop" alt="Interior cálido de una propiedad MAR" loading="lazy">
       </div>
-      <div>
-        <div style="font-family:'Fraunces',serif;font-size:1.6rem;color:var(--fucsia);margin-bottom:8px">02</div>
-        <p><strong style="color:var(--negro)">Consultá</strong><br>Escribinos por WhatsApp o el formulario de contacto.</p>
-      </div>
-      <div>
-        <div style="font-family:'Fraunces',serif;font-size:1.6rem;color:var(--fucsia);margin-bottom:8px">03</div>
-        <p><strong style="color:var(--negro)">Confirmá</strong><br>Coordinamos la reserva y quedás listo para viajar.</p>
+      <div class="reveal">
+        <span class="tag-eyebrow">Por qué elegir MAR</span>
+        <h2>Alquilar acá es simple, de verdad</h2>
+        <p style="margin-top:14px">Sin intermediarios interminables ni letra chica. Consultás por WhatsApp y coordinamos todo directo con vos, con propiedades reales y fechas siempre actualizadas.</p>
+        <ul class="editorial-list">
+          <li><span class="num">01</span><div><strong>Propiedades seleccionadas</strong><p>Casas y departamentos elegidos uno por uno en las mejores zonas.</p></div></li>
+          <li><span class="num">02</span><div><strong>Atención personalizada</strong><p>Te acompañamos antes, durante y después de tu estadía.</p></div></li>
+          <li><span class="num">03</span><div><strong>Consulta rápida por WhatsApp</strong><p>Respondemos todos los días, sin vueltas ni esperas.</p></div></li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
-<div class="wave-divider" style="transform:scaleY(-1)"><svg viewBox="0 0 1200 44" preserveAspectRatio="none"><path d="M0,22 C150,44 350,0 600,18 C850,36 1050,4 1200,20 L1200,44 L0,44 Z" fill="#201B18"></path></svg></div>
-<section class="testimonials reveal">
+<!-- Zonas -->
+<section class="section" id="zonas" style="background:var(--arena)">
   <div class="container">
-    <div class="tag-eyebrow">Testimonios</div>
-    <h2>Lo que dicen quienes ya se alojaron</h2>
-    <div class="testimonial-grid reveal-stagger">
-      <div class="testimonial-card">
-        <div class="testimonial-stars">★★★★★</div>
-        <p>"Alquilamos la Casa Playa Grande para las fiestas y fue perfecto. Coordinar todo por WhatsApp hizo que sea rapidísimo, sin vueltas."</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">M</div>
-          <div><strong>Martina F.</strong><span>Casa Playa Grande</span></div>
-        </div>
-      </div>
-      <div class="testimonial-card">
-        <div class="testimonial-stars">★★★★★</div>
-        <p>"Volvimos a elegir MAR por segundo año. La atención es súper directa y las propiedades están tal cual las fotos."</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">L</div>
-          <div><strong>Lucas G.</strong><span>Departamento Güemes</span></div>
-        </div>
-      </div>
-      <div class="testimonial-card">
-        <div class="testimonial-stars">★★★★★</div>
-        <p>"Fuimos en grupo familiar y necesitábamos algo grande cerca del mar. Nos ayudaron a encontrar justo lo que buscábamos."</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">S</div>
-          <div><strong>Sofía A.</strong><span>Casa Los Troncos</span></div>
-        </div>
+    <div class="center reveal" style="max-width:620px;margin:0 auto 40px">
+      <span class="tag-eyebrow">Dónde alojarte</span>
+      <h2>Las zonas de Mar del Plata</h2>
+      <p style="margin-top:12px">Cada barrio tiene su propia personalidad. Elegí el que mejor va con tu verano.</p>
+    </div>
+    <div class="zones-grid reveal-stagger">
+      <a href="propiedades.html?zone=Playa%20Grande" class="zone-card">
+        <img src="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?q=80&w=900&auto=format&fit=crop" alt="Playa Grande" loading="lazy">
+        <div class="zone-body"><h3>Playa Grande</h3><p>La playa más elegida, a metros del mar.</p></div>
+      </a>
+      <a href="propiedades.html?zone=Varese" class="zone-card">
+        <img src="https://images.unsplash.com/photo-1505228395891-9a51e7e86bf6?q=80&w=900&auto=format&fit=crop" alt="Varese" loading="lazy">
+        <div class="zone-body"><h3>Varese</h3><p>Costa exclusiva y atardeceres únicos.</p></div>
+      </a>
+      <a href="propiedades.html?zone=Güemes" class="zone-card">
+        <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?q=80&w=900&auto=format&fit=crop" alt="Güemes" loading="lazy">
+        <div class="zone-body"><h3>Güemes</h3><p>Cafés, tiendas y la vida del barrio.</p></div>
+      </a>
+      <a href="propiedades.html?zone=Los%20Troncos" class="zone-card">
+        <img src="https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&w=900&auto=format&fit=crop" alt="Los Troncos" loading="lazy">
+        <div class="zone-body"><h3>Los Troncos</h3><p>Calles arboladas y calma residencial.</p></div>
+      </a>
+      <a href="propiedades.html?zone=Chauvin" class="zone-card">
+        <img src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?q=80&w=900&auto=format&fit=crop" alt="Chauvin" loading="lazy">
+        <div class="zone-body"><h3>Chauvin</h3><p>Tranquilo, verde y bien conectado.</p></div>
+      </a>
+      <a href="propiedades.html?zone=Rumencó" class="zone-card">
+        <img src="https://images.unsplash.com/photo-1502209877429-c6d9cf5c8f0d?q=80&w=900&auto=format&fit=crop" alt="Rumencó" loading="lazy">
+        <div class="zone-body"><h3>Rumencó</h3><p>Naturaleza y privacidad para grupos.</p></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Beneficios -->
+<section class="section">
+  <div class="container">
+    <div class="center reveal" style="max-width:600px;margin:0 auto 40px">
+      <span class="tag-eyebrow">La diferencia MAR</span>
+      <h2>Una estadía sin sorpresas</h2>
+    </div>
+    <div class="benefits-grid reveal-stagger">
+      <div class="benefit"><div class="b-num">01</div><strong>Propiedades seleccionadas</strong><p>Elegidas una por una por su calidad y ubicación.</p></div>
+      <div class="benefit"><div class="b-num">02</div><strong>Atención personalizada</strong><p>Trato directo y cercano en cada paso.</p></div>
+      <div class="benefit"><div class="b-num">03</div><strong>Ubicaciones destacadas</strong><p>Las mejores zonas, cerca del mar y del centro.</p></div>
+      <div class="benefit"><div class="b-num">04</div><strong>Consulta por WhatsApp</strong><p>Respondemos rápido, todos los días.</p></div>
+      <div class="benefit"><div class="b-num">05</div><strong>Acompañamiento</strong><p>Estamos con vos durante toda la estadía.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA final -->
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="cta-band reveal">
+      <span class="tag-eyebrow" style="color:var(--marron-suave)">Tu próximo verano</span>
+      <h2>Tu próximo verano empieza en MAR</h2>
+      <p>Escribinos y te ayudamos a encontrar la propiedad ideal para tus fechas. Coordinamos todo por WhatsApp, sin vueltas.</p>
+      <div class="btn-row">
+        <a href="propiedades.html" class="btn btn-light btn-lg">Ver propiedades</a>
+        <a href="#" id="cta-wsp" class="btn btn-wsp btn-lg">Consultar por WhatsApp</a>
       </div>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="container">
+  <div class="footer-grid">
     <div>
-      <div class="logo" style="color:#fff;margin-bottom:10px">MAR<span>.</span></div>
-      <p style="color:var(--beige);opacity:.7;max-width:260px">Alquileres temporarios en Mar del Plata. Tu lugar frente al mar.</p>
+      <div class="logo">MAR<span>.</span></div>
+      <p class="foot-tag">Alquileres temporarios en Mar del Plata. Tu lugar frente al mar, todo el año.</p>
     </div>
     <div>
       <h4>Navegación</h4>
       <a href="index.html">Inicio</a>
       <a href="propiedades.html">Propiedades</a>
+      <a href="index.html#zonas">Zonas</a>
       <a href="contacto.html">Contacto</a>
     </div>
     <div>
+      <h4>Zonas</h4>
+      <a href="propiedades.html?zone=Playa%20Grande">Playa Grande</a>
+      <a href="propiedades.html?zone=Varese">Varese</a>
+      <a href="propiedades.html?zone=Güemes">Güemes</a>
+      <a href="propiedades.html?zone=Los%20Troncos">Los Troncos</a>
+    </div>
+    <div>
       <h4>Contacto</h4>
+      <a href="#" id="footer-wsp">WhatsApp · 223 300-3013</a>
       <a href="contacto.html">Formulario de consulta</a>
-      <a href="#" id="footer-wsp">WhatsApp</a>
+      <p class="foot-line">Mar del Plata, Argentina</p>
+      <a href="admin/login.html" style="opacity:.5;font-size:.82rem">Administración</a>
     </div>
   </div>
-  <div class="footer-bottom">© 2026 MAR — Mar del Plata, Argentina</div>
+  <div class="footer-bottom">
+    <span>© 2026 MAR — Mar del Plata, Argentina</span>
+    <span>Tu lugar frente al mar.</span>
+  </div>
 </footer>
 
 <script src="assets/js/data.js"></script>
 <script src="assets/js/store.js"></script>
 <script src="assets/js/main.js"></script>
 <script>
-  const zones = [...new Set(MAR.getProperties().map(p => p.zone))];
+  // Poblar zonas del buscador
   const zoneSelect = document.getElementById("s-zone");
-  zones.forEach(z => {
+  MAR.getZones().forEach((z) => {
     const opt = document.createElement("option");
     opt.value = z; opt.textContent = z;
     zoneSelect.appendChild(opt);
@@ -207,31 +261,30 @@
 
   function propCard(p, i) {
     return `
-    <a class="card-prop" href="propiedad.html?id=${p.id}">
-      <div class="thumb">
-        <span class="zone-tag">${p.zone}</span>
-        ${i === 0 ? `<span class="ribbon">Destacada</span>` : ""}
+    <a class="prop-card" href="propiedad.html?id=${p.id}">
+      <div class="prop-media">
+        <span class="prop-zone">${p.zone}</span>
+        ${i === 0 ? '<span class="prop-ribbon">Destacada</span>' : ""}
         <img src="${p.photos[0]}" alt="${p.name}" loading="lazy">
       </div>
-      <div class="body">
-        <h3>${p.name}</h3>
-        <div class="meta">${p.zone}</div>
-        <div class="specs">
-          <span>👥 Hasta ${p.guests}</span>
-          <span>🛏️ ${p.bedrooms} hab.</span>
-          <span>🛁 ${p.bathrooms} baños</span>
+      <div class="prop-info">
+        <div class="prop-loc">${p.zone}</div>
+        <h3 class="prop-name">${p.name}</h3>
+        <div class="prop-specs">
+          <span>Hasta ${p.guests} huéspedes</span>
+          <span>${p.bedrooms} hab.</span>
+          <span>${p.bathrooms} baños</span>
         </div>
-        <div class="price-row">
-          <div class="price">USD ${p.price} <small>/ noche</small></div>
-          <span class="btn btn-sm btn-ghost">Ver</span>
+        <div class="prop-price-row">
+          <div class="prop-price">USD ${p.price} <small>/ noche</small></div>
+          <span class="prop-cta">Ver más →</span>
         </div>
       </div>
     </a>`;
   }
 
   document.getElementById("featured-grid").innerHTML =
-    MAR.getProperties().slice(0, 6).map(propCard).join("");
-  document.getElementById("trust-count").dataset.count = MAR.getProperties().length;
+    MAR.getFeatured().slice(0, 6).map(propCard).join("");
 
   document.getElementById("search-form").addEventListener("submit", (e) => {
     e.preventDefault();
@@ -247,12 +300,13 @@
     window.location.href = "propiedades.html?" + params.toString();
   });
 
-  document.getElementById("footer-wsp").addEventListener("click", (e) => {
-    e.preventDefault();
-    window.open(waLink("Hola MAR, quiero consultar por una propiedad en Mar del Plata."), "_blank");
-  });
+  const wspMsg = "Hola MAR, quiero consultar por una propiedad en Mar del Plata.";
+  document.getElementById("footer-wsp").addEventListener("click", (e) => { e.preventDefault(); window.open(waLink(wspMsg), "_blank"); });
+  document.getElementById("cta-wsp").addEventListener("click", (e) => { e.preventDefault(); window.open(waLink(wspMsg), "_blank"); });
 
-  injectWhatsappFloat("Hola MAR, quiero consultar por una propiedad en Mar del Plata.");
+  setupNav({ overHero: true });
+  setupReveal();
+  injectWhatsappFloat(wspMsg);
 </script>
 </body>
 </html>
